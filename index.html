@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheatsheets</title>
 <style>
-:root{--bg:#1a1e24;--surface:#232830;--border:#333a44;--text:#e0e6ed;--muted:#8b949e;--accent:#7eb8f7;--key-bg:#2a3140;--key-border:#3d4a5c}
-[data-theme="light"]{--bg:#f5f6f8;--surface:#fff;--border:#d4d8dd;--text:#2c3e50;--muted:#6b7c8f;--accent:#2563eb;--key-bg:#eef2f7;--key-border:#d0d7de}
+:root{--bg:#1a1e24;--surface:#232830;--border:#333a44;--text:#e0e6ed;--muted:#8b949e;--accent:#7eb8f7;--key-bg:#2a3140;--key-border:#3d4a5c;--mac:#a78bfa;--win:#7eb8f7}
+[data-theme="light"]{--bg:#f5f6f8;--surface:#fff;--border:#d4d8dd;--text:#2c3e50;--muted:#6b7c8f;--accent:#2563eb;--key-bg:#eef2f7;--key-border:#d0d7de;--mac:#7c3aed;--win:#2563eb}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:2rem 1.5rem;max-width:1100px;margin:0 auto}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
@@ -18,12 +18,20 @@ h1{font-size:1.5rem;font-weight:700}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 .panel{display:none}
 .panel.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1.2rem}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
 .card h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.7rem;font-weight:600}
-.card dl{display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem}
-.card dt{font-family:"SFMono-Regular",Consolas,monospace;font-size:.82rem;background:var(--key-bg);border:1px solid var(--key-border);border-radius:4px;padding:.15rem .45rem;white-space:nowrap;align-self:center}
-.card dd{font-size:.85rem;align-self:center;color:var(--text)}
+.row{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:.4rem;align-items:center;padding:.35rem 0;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}
+.key{font-family:"SFMono-Regular",Consolas,monospace;font-size:.78rem;background:var(--key-bg);border:1px solid var(--key-border);border-radius:4px;padding:.15rem .4rem;white-space:nowrap}
+.key.mac{border-left:3px solid var(--mac)}
+.key.win{border-left:3px solid var(--win)}
+.desc{font-size:.83rem;color:var(--text)}
+.legend{display:flex;gap:1.2rem;margin-bottom:1.5rem;font-size:.8rem;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:.3rem}
+.dot{width:10px;height:10px;border-radius:2px}
+.dot.m{background:var(--mac)}
+.dot.w{background:var(--win)}
 </style>
 </head>
 <body>
@@ -36,49 +44,40 @@ h1{font-size:1.5rem;font-weight:700}
 </nav>
 
 <section class="panel active" id="sublime">
+<div class="legend"><span><span class="dot m"></span>Mac</span><span><span class="dot w"></span>Windows</span></div>
 <div class="grid">
 
 <div class="card">
 <h3>Lines</h3>
-<dl>
-<dt>Ctrl+Shift+Up/Down</dt><dd>Move line up / down</dd>
-<dt>Ctrl+Shift+D</dt><dd>Duplicate line</dd>
-<dt>Ctrl+Shift+J</dt><dd>Join lines</dd>
-<dt>Ctrl+Shift+L</dt><dd>Split selection into lines</dd>
-</dl>
+<div class="row"><span class="key mac">⌘+Ctrl+Up/Down</span><span class="key win">Ctrl+Shift+Up/Down</span><span class="desc">Move line up / down</span></div>
+<div class="row"><span class="key mac">⌘+Shift+D</span><span class="key win">Ctrl+Shift+D</span><span class="desc">Duplicate line</span></div>
+<div class="row"><span class="key mac">⌘+J</span><span class="key win">Ctrl+Shift+J</span><span class="desc">Join lines</span></div>
+<div class="row"><span class="key mac">⌘+Shift+L</span><span class="key win">Ctrl+Shift+L</span><span class="desc">Split selection into lines</span></div>
 </div>
 
 <div class="card">
 <h3>Selection</h3>
-<dl>
-<dt>Ctrl+Shift+Space</dt><dd>Expand selection</dd>
-<dt>Ctrl+Alt+Up/Down</dt><dd>Multi-cursor line select</dd>
-</dl>
+<div class="row"><span class="key mac">⌘+Shift+Space</span><span class="key win">Ctrl+Shift+Space</span><span class="desc">Expand selection</span></div>
+<div class="row"><span class="key mac">Ctrl+Shift+Up/Down</span><span class="key win">Ctrl+Alt+Up/Down</span><span class="desc">Multi-cursor line select</span></div>
 </div>
 
 <div class="card">
 <h3>Editing</h3>
-<dl>
-<dt>Ctrl+Shift+H</dt><dd>Replace next</dd>
-<dt>Ctrl+Shift+[ / ]</dt><dd>Fold / unfold</dd>
-<dt>Ctrl+Shift+T</dt><dd>Reopen closed tab</dd>
-</dl>
+<div class="row"><span class="key mac">⌥+⌘+F</span><span class="key win">Ctrl+Shift+H</span><span class="desc">Replace next</span></div>
+<div class="row"><span class="key mac">⌘+⌥+[ / ]</span><span class="key win">Ctrl+Shift+[ / ]</span><span class="desc">Fold / unfold</span></div>
+<div class="row"><span class="key mac">⌘+Shift+T</span><span class="key win">Ctrl+Shift+T</span><span class="desc">Reopen closed tab</span></div>
 </div>
 
 <div class="card">
 <h3>Block (Column) Select - Mouse</h3>
-<dl>
-<dt>Alt+Shift + drag</dt><dd>Block select</dd>
-<dt>Block + Alt + drag</dt><dd>Move block</dd>
-<dt>Block + Ctrl + drag</dt><dd>Copy block</dd>
-</dl>
+<div class="row"><span class="key mac">⌥ + drag</span><span class="key win">Alt+Shift + drag</span><span class="desc">Block select</span></div>
+<div class="row"><span class="key mac">Block + ⌥ drag</span><span class="key win">Block + Alt drag</span><span class="desc">Move block</span></div>
+<div class="row"><span class="key mac">Block + ⌘ drag</span><span class="key win">Block + Ctrl drag</span><span class="desc">Copy block</span></div>
 </div>
 
 <div class="card">
 <h3>Custom Plugins</h3>
-<dl>
-<dt>Ctrl+Shift+M</dt><dd>CaseCycle: cycle text case</dd>
-</dl>
+<div class="row"><span class="key mac">⌘+Shift+M</span><span class="key win">Ctrl+Shift+M</span><span class="desc">CaseCycle: cycle text case</span></div>
 </div>
 
 </div>
